@@ -13,9 +13,9 @@ describe('catalogx.rest', function () {
     }
 
     function spyOnRest() {
-        payload = rest.calls[0].args[0];
-        params = rest.calls[0].args[0].params;
-        success = rest.calls[0].args[0].success;
+        payload = rest.calls.first().args[0];
+        params = rest.calls.first().args[0].params;
+        success = rest.calls.first().args[0].success;
     }
 
     describe('update catalog item writer', function () {
@@ -54,7 +54,7 @@ describe('catalogx.rest', function () {
 
             it('installed on success handler', function () {
                 success();
-                expect(success.calls[0]).toBeTruthy();
+                expect(success.calls.first()).toBeTruthy();
             });
         });
     });

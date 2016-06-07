@@ -1,0 +1,5 @@
+{
+  "default": {
+    "catalogx.rest": "bower_components/binarta.catalogx.rest.angular/src/catalogx.rest.js"
+  }
+}
