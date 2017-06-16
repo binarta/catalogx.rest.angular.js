@@ -4,6 +4,7 @@ describe('catalogx.rest', function () {
     beforeEach(module('catalogx.gateway'));
     beforeEach(inject(function (restServiceHandler, config) {
         rest = restServiceHandler;
+        rest.and.returnValue('promise');
         exposeConfig(config);
         config.baseUri = 'http://host/'
     }));
@@ -39,8 +40,10 @@ describe('catalogx.rest', function () {
         });
 
         describe('on execute', function () {
+            var returned;
+
             beforeEach(function () {
-                component(args);
+                returned = component(args);
                 spyOnRest();
             });
 
@@ -55,6 +58,10 @@ describe('catalogx.rest', function () {
             it('installed on success handler', function () {
                 success();
                 expect(success.calls.first()).toBeTruthy();
+            });
+
+            it('returns promise from rest handler', function () {
+                expect(returned).toEqual('promise');
             });
         });
     });

@@ -9,6 +9,6 @@ function UpdateCatalogItemWriterFactory(restServiceHandler, config) {
             url: (config.baseUri || '') + 'api/entity/catalog-item',
             data: args.data
         };
-        restServiceHandler(args);
+        return restServiceHandler(args);
     }
 }
